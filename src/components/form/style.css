@@ -1,0 +1,87 @@
+.form-title {
+  font-family: Roboto;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 24.61px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #1c2f5b;
+}
+.form-input-title {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.41px;
+  text-align: left;
+
+  color: #666666;
+}
+
+
+
+
+.custom-stepper-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom-stepper-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Customize the indicator (circle) width */
+.custom-step-icon {
+  background-color: #e0e0e0;
+  color: #333;
+  border-radius: 0% !important;
+  width: 236px !important ;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #e0e0e0;
+  transition: all 0.3s;
+}
+
+/* .custom-step-icon.mantine-Stepper-active {
+  background-color: #488ac8 !important;
+  color: white !important;
+  border-color: #488ac8 !important;
+} */
+
+/* Customize the body width */
+.custom-step-body {
+  width: 800px; /* Set the width for the stepper body */
+  margin-top: 16px;
+  text-align: center;
+}
+
+.custom-step-body .mantine-Stepper-label {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.custom-step-body .mantine-Stepper-description {
+  color: #999;
+  font-size: 14px;
+}
+
+/* Center the indicator and body independently */
+.custom-stepper-root .mantine-Stepper-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px; /* Custom width for each step */
+}
