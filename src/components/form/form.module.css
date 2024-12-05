@@ -1,0 +1,27 @@
+/* .separator {
+  content: "";
+  position: "unset";
+  left: 50%;
+  top: 100%;
+  width: 0px;
+  height: 0px;
+  border-top: 12px solid #fff;
+  border-left: 12px solid #ffffff;
+  border-bottom: 12px solid #fff;
+  border-right: 12px solid #fff;
+  margin-left: -2px;
+  margin-right: -22px;
+  z-index: 9;
+  &[data-active] {
+    border-top: 12px solid #fff;
+    border-left: 12px solid #488ac8;
+    border-bottom: 12px solid #fff;
+    border-right: 12px solid #fff;
+  };
+  &[data-completed] {
+    border-top: 12px solid #fff;
+    border-left: 12px solid #ffffff;
+    border-bottom: 12px solid #fff;
+    border-right: 12px solid #fff;
+  }
+} */

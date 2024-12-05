@@ -7,7 +7,7 @@ import HomePage from './Page/home';
 
 function App() {
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col relative">
       <Header />
     
         <HomePage />
