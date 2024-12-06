@@ -1,6 +1,6 @@
-/* .separator {
-  content: "";
-  position: "unset";
+.separator {
+  /* content: "";
+  position: unset;
   left: 50%;
   top: 100%;
   width: 0px;
@@ -23,5 +23,20 @@
     border-left: 12px solid #ffffff;
     border-bottom: 12px solid #fff;
     border-right: 12px solid #fff;
-  }
-} */
+  } */
+}
+.step{
+  width:150px;
+  height:40px;
+  background-color:green;
+  position:relative;
+}
+.stepBody{
+  width: 0; 
+  height: 0; 
+  border-top: 20px solid transparent; 
+  border-bottom: 20px solid transparent; /* 40px height (20+20) */
+  border-left: 20px solid green;
+  position:absolute;
+  right:-20px;
+}

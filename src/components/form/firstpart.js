@@ -114,12 +114,12 @@ function Firstpart({ activeStep, formData, setFormData, setActiveStep }) {
       <div className="mt-4 mx-auto" style={{ width: "700px" }}>
         <div className="flex gap-5 justify-end">
           {activeStep < 1 && (
-            <Button color="#488AC8" onClick={nextStep}>
-              Get Price
+            <Button color="#488AC8" onClick={nextStep} disabled={formData.cptCodes.length === 0}>
+              GET PRICE
             </Button>
           )}
           <Button color="#666666" variant="default" onClick={prevStep}>
-            Reset All
+            RESET ALL
           </Button>
         </div>
       </div>
