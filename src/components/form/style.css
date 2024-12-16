@@ -54,11 +54,11 @@
   transition: all 0.3s;
 }
 
-/* .custom-step-icon.mantine-Stepper-active {
+.custom-step-icon.mantine-Stepper-active {
   background-color: #488ac8 !important;
   color: white !important;
   border-color: #488ac8 !important;
-} */
+}
 
 /* Customize the body width */
 .custom-step-body {
@@ -83,30 +83,42 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 200px; /* Custom width for each step */
+  width: 200px; 
+}
+.mantine-Stepper-stepIcon {
+  background-color:#E6E6E6 !important;
+  border-color: #E6E6E6 !important;
+  border-radius: 50% !important;
 }
 .mantine-Stepper-stepIcon:where([data-completed]) {
   background-color:#E6E6E6 !important;
   border-color: #E6E6E6 !important;
+  border-radius: 50% !important;
 }
-/* .separator {
-  content: '';
-  position: 'unset';
-  left: 50%;
-  top: 100%;
-  width: 0px;
-  height: 0px;
-  border-top: 12px solid #fff;
-  border-left: 12px solid #ffffff;
-  border-bottom: 12px solid #fff;
-  border-right: 12px solid #fff;
-  margin-left: -2px;
-  margin-right:-22px;
-  z-index:9;
-  &[data-active] {
-    border-top: 12px solid #fff;
-    border-left: 12px solid #488ac8;
-    border-bottom: 12px solid #fff;
-    border-right: 12px solid #fff;
+
+.mantine-Stepper-stepIcon:where([data-progress]) {
+  background-color:#488AC8 !important;
+  border-color: #488AC8 !important;
+  border-radius: 50% !important;
+}
+.mantine-MultiSelect-option {
+  border-bottom:1px solid #f5f5f5;
+  span{
+    font-size: 14px;
+  line-height: 16px;
+  color:#707070;
+  font-weight:400;
   }
-} */
+  
+}
+
+.custom-tooltip {
+  z-index: 1000; /* Ensure it's above other elements */
+  background-color: #1a1a1a; /* Dark background color */
+  color: #ffffff; /* White text */
+  font-size: 14px; /* Adjust font size */
+  border-radius: 4px; /* Rounded corners */
+  padding: 8px; /* Inner spacing */
+  border: 1px solid #4caf50; /* Optional border */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow */
+}

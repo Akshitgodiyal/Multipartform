@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Table, Checkbox, Button, Badge } from "@mantine/core";
 import CustomTable, { TableCAt } from "./table";
 
-const DataResults = () => {
+const DataResults = ({activeStep,setActiveStep}) => {
   // Table data
   const data = [
     { payer: "Aetna", records: 98, uniqueNPIs: 44, cost: 196 },
@@ -10,23 +10,26 @@ const DataResults = () => {
     { payer: "Cigna", records: 98, uniqueNPIs: 44, cost: 176 },
     { payer: "UHC", records: 98, uniqueNPIs: 44, cost: 204 },
   ];
-
+  const [totalCost, setTotalCost] = useState(0);
   // State for selected rows
   const [selected, setSelected] = useState([true, false, false, false]);
 
+  const nextStep = () => setActiveStep((current) => Math.min(current + 1, 2));
+  const prevStep = () => setActiveStep((current) => Math.max(current - 1, 0));
   // Calculate total cost
-  const totalCost = data
-    .filter((_, index) => selected[index])
-    .reduce((sum, row) => sum + row.cost, 0);
+  // const totalCost = data
+  //   .filter((_, index) => selected[index])
+  //   .reduce((sum, row) => sum + row.cost, 0);
 
   // Handle row selection
-  const handleRowSelection = (index) => {
-    setSelected((prevSelected) => {
-      const newSelected = [...prevSelected];
-      newSelected[index] = !newSelected[index];
-      return newSelected;
-    });
-  };
+  // const handleRowSelection = (index) => {
+  //   setSelected((prevSelected) => {
+  //     const newSelected = [...prevSelected];
+  //     newSelected[index] = !newSelected[index];
+  //     return newSelected;
+  //   });
+  // };
+  
   const tags = [
     { key: "CPT", value: "0001F, 0001A" },
     { key: "NPI", value: "Lorem Ipsum" },
@@ -34,6 +37,23 @@ const DataResults = () => {
     { key: "Provider Org", value: "Lorem Ipsum" },
     { key: "Payer", value: "Lorem Ipsum" },
   ];
+  const updateTotalCost = (rows) => {
+    if(rows){
+      const sum = rows.reduce((acc, row) => acc + row.cost, 0);
+    console.log('total cost >',sum)
+    setTotalCost(sum);
+    }else{
+      console.log('reduce >',rows)
+    }
+    
+  };
+  const selectedRows = (rows) =>{
+    if(rows){
+      updateTotalCost(rows)
+    }
+   
+    console.log('rows >',rows)
+  }
   return (
     <div className="p-6 bg-gray-50 ">
       {/* Search Tags */}
@@ -87,7 +107,7 @@ const DataResults = () => {
             <div className="font-semibold text-base px-5 py-4 text-[#000000]">
             Your Custom Data Results
             </div>
-          <CustomTable />
+          <CustomTable updateSelected={selectedRows}/>
         </div>
         <div className="h-[321px] shadow-lg shadow-[#00000026] w-[318px] rounded-md">
           <div className="flex flex-col justify-center p-5">
@@ -117,13 +137,15 @@ const DataResults = () => {
                   />
                 </svg>
               </div>
-              <div className="font-bold text-[30px] text-center ">$286</div>
+              <div className="font-bold text-[30px] text-center ">${totalCost}</div>
               <div className=" text-15px] text-center text-[#9CA3B3] ">
                 + Tax{" "}
               </div>
             </div>
             <div className="font-semibold w-full text-center my-4 text-[22px]">
-              <Button fullWidth color="#488AC8">
+              <Button fullWidth color="#488AC8"
+              disabled={totalCost === 0}
+             onClick={nextStep}>
                 Place Order
               </Button>
             </div>

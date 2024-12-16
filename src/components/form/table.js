@@ -8,7 +8,7 @@ const data = [
   { payer: "UHC", records: 98, uniqueNPIs: 44, cost: 204.0 },
 ];
 
-function CustomTable() {
+function CustomTable({updateSelected}) {
   const [selectedRows, setSelectedRows] = useState([]);
   const [sortBy, setSortBy] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
@@ -25,13 +25,28 @@ function CustomTable() {
   });
 
   // Checkbox logic
-  const toggleRowSelection = (payer) => {
-    if (selectedRows.includes(payer)) {
-      setSelectedRows(selectedRows.filter((row) => row !== payer));
-    } else {
-      setSelectedRows([...selectedRows, payer]);
-    }
+  const handleCheckboxChange = (row) => {
+    setSelectedRows((prevSelectedRows) => {
+      const isAlreadySelected = prevSelectedRows.some(
+        (selectedRow) => selectedRow.payer === row.payer
+      );
+
+      if (isAlreadySelected) {
+        updateSelected(prevSelectedRows.filter(
+          (selectedRow) => selectedRow.payer !== row.payer
+        ))
+        return prevSelectedRows.filter(
+          (selectedRow) => selectedRow.payer !== row.payer
+        );
+      } else {
+        // Add the row to the selectedRows
+        updateSelected([...prevSelectedRows, row])
+        return [...prevSelectedRows, row];
+      }
+    });
+    updateSelected()
   };
+
 
   const toggleAllRows = () => {
     if (selectedRows.length === data.length) {
@@ -101,8 +116,10 @@ function CustomTable() {
             >
               <td className="p-3 border-r ">
                 <Checkbox
-                  checked={selectedRows.includes(row.payer)}
-                  onChange={() => toggleRowSelection(row.payer)}
+                  checked={selectedRows.some(
+                    (selectedRow) => selectedRow.payer === row.payer
+                  )}
+                  onChange={() => handleCheckboxChange(row)}
                 />
               </td>
               <td className="p-3">{row.payer}</td>

@@ -25,18 +25,32 @@
     border-right: 12px solid #fff;
   } */
 }
-.step{
+/* .step{
   width:150px;
   height:40px;
   background-color:green;
   position:relative;
-}
-.stepBody{
+} */
+
+/* .stepBody{
   width: 0; 
   height: 0; 
   border-top: 20px solid transparent; 
-  border-bottom: 20px solid transparent; /* 40px height (20+20) */
+  border-bottom: 20px solid transparent; 
   border-left: 20px solid green;
   position:absolute;
   right:-20px;
+} */
+
+.step:after{
+  content: '';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 8px solid white; /* Arrow color */
 }
